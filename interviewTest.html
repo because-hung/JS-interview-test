@@ -110,7 +110,69 @@
     //   }, 0 , i) // 1 2 3 4 5
     // }
 
+    // // Q7
 
+    // {
+    //   (function () {
+    //     var a = b = 'hello world'
+    //   })()
+
+    //   console.log(`a defined? ${typeof a !== 'undefined'}`) // undefined  - false
+    //   console.log(`b defined? ${typeof b !== 'undefined'}`) // 'hello world' - true
+    // }
+
+    // // 會變成下方這樣
+
+    // {
+    //   (function () {
+    //     b = 'hello world'
+    //     var a = b
+    //   })()
+    // }
+
+    // // Q8 promise
+
+    // const p = new Promise((resolve, reject) => {
+    //   console.log(1)
+    //   resolve(5)
+    //   console.log(2)
+    //   reject(6)
+    // })
+
+    // p
+    //   .then(value => {
+    //     console.log(value)
+    //     console.log(3)
+    //   })
+    //   .catch(error => {
+    //     console.log(error)
+    //   })
+
+    // console.log(4)
+
+    // // Q8 - answer - 1、2、4、5、3
+
+    // // Q9 - promise -2
+
+    // console.log(1)
+
+    // setTimeout(() => {
+    //   console.log(2)
+    //   Promise.resolve().then(() => console.log(3))
+    // }, 0)
+
+    // new Promise((resolve, reject) => {
+    //   console.log(4)
+    //   resolve(5)
+    // }).then(data => console.log(data))
+
+    // setTimeout(() => {
+    //   console.log(6)
+    // }, 0)
+
+    // console.log(7)
+
+    // // Q9 - answer - 1、4、7、5、2、3、6
   </script>
 </body>
 
