@@ -173,6 +173,47 @@
     // console.log(7)
 
     // // Q9 - answer - 1、4、7、5、2、3、6
+
+    // Q10 - reduce
+    const arr = [{
+        id: 1,
+        name: 'a'
+      },
+      {
+        id: 2,
+        name: 'b'
+      },
+      {
+        id: 3,
+        name: 'c'
+      },
+      {
+        id: 4,
+        name: 'd'
+      }
+    ]
+
+    // obj
+    const newArr = arr.reduce((acc, cur) => {
+      acc[cur.id] = cur.name
+      return acc
+    }, {})
+    console.log('obj', newArr)
+
+    // ary
+    const newArrTwo = arr.reduce((acc, cur) => {
+      acc.push(cur.name)
+      return acc
+    }, [])
+    console.log('objTWO', newArrTwo)
+
+    // answer reduce
+    const obj = {
+      1: 'a',
+      2: 'b',
+      3: 'c',
+      4: 'd'
+    }
   </script>
 </body>
 
