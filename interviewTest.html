@@ -45,7 +45,7 @@
     // // Q3 - 宣告
     // var z = 1,
     //   y = z = typeof y;
-    // console.log(y); // undefined  Right to Left，因此typeof y將首先評估 ，即undefined。它將被分配給z，然後y被分配 z 的值，然後z被分配值1。
+    // console.log(y); // undefined  Right to Left，因此typeof y將首先評估 ，即undefined。它將被分配給z，然後y被分配 z 的值，然後z被分配值undefined。
 
     // // Q4 -function
 
@@ -260,6 +260,31 @@
 
     // console.log(newObj)
 
+    // Q11 質數 for 應用
+
+    function decidePrime(n) {
+      // 判斷一個數是否能被自身小的正整數(除了1和自身)整除，能整除則不是質數
+      for (var k = 2; k < n; k++) {
+        if (n % k == 0) {
+          return false;
+        }
+      }
+      return true
+
+    }
+
+    function primeNumber(num) {
+      var arr = [1];
+      // 帶入任意數  利用判斷method 判斷是否為質數 是 就加入 array
+      for (var i = 2; i < num + 1; i++) {
+        if (decidePrime(i)) {
+          arr.push(i);
+        }
+      }
+      return arr;
+    }
+
+    console.log(primeNumber(50));
   </script>
 </body>
 
