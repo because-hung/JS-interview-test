@@ -104,11 +104,11 @@
 
     //  // Q6 - answer - 3 - setTimeout 帶參數
 
-    //   for (let i = 1; i <= 5; i++) {
-    //   setTimeout(function (i) {
-    //     console.log(i)
-    //   }, 0 , i) // 1 2 3 4 5
-    // }
+    for (var i = 1; i <= 5; i++) {
+      setTimeout(function (i) {
+        console.log(i)
+      }, 0 , i) // 1 2 3 4 5
+    }
 
     // // Q7
 
@@ -262,29 +262,29 @@
 
     // Q11 質數 for 應用
 
-    function decidePrime(n) {
-      // 判斷一個數是否能被自身小的正整數(除了1和自身)整除，能整除則不是質數
-      for (var k = 2; k < n; k++) {
-        if (n % k == 0) {
-          return false;
-        }
-      }
-      return true
+    // function decidePrime(n) {
+    //   // 判斷一個數是否能被自身小的正整數(除了1和自身)整除，能整除則不是質數
+    //   for (var k = 2; k < n; k++) {
+    //     if (n % k == 0) {
+    //       return false;
+    //     }
+    //   }
+    //   return true
 
-    }
+    // }
 
-    function primeNumber(num) {
-      var arr = [1];
-      // 帶入任意數  利用判斷method 判斷是否為質數 是 就加入 array
-      for (var i = 2; i < num + 1; i++) {
-        if (decidePrime(i)) {
-          arr.push(i);
-        }
-      }
-      return arr;
-    }
+    // function primeNumber(num) {
+    //   var arr = [1];
+    //   // 帶入任意數  利用判斷method 判斷是否為質數 是 就加入 array
+    //   for (var i = 2; i < num + 1; i++) {
+    //     if (decidePrime(i)) {
+    //       arr.push(i);
+    //     }
+    //   }
+    //   return arr;
+    // }
 
-    console.log(primeNumber(50));
+    // console.log(primeNumber(50));
   </script>
 </body>
 
