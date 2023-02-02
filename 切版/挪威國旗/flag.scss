@@ -1,0 +1,54 @@
+/*國旗 寬 6:1:2:1:12(加起來22)  高 6:1:2:1:6(加起來16)*/
+/*設定 gap 為 2等分 border為 1等分*/
+$width: 100vw;
+$height: $width * 8/11; /* 16:22 */
+$flag_cross_color: #00205B;
+$flag_bg_color: #BA0C2F;
+$flag_border_color: #ffffff;
+$gap: $width * 1/11;
+/*gap 為 2等分 2/22 = 1/11 */
+$border: $gap * 0.5;
+/* border 為 1等分 所以 gap 除以 2*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.flag {
+  width: $width;
+  height: $height;
+  display: grid;
+  /*gap 先不算 border為 1等分 所以 寬的等分 6+1 12+1 加起來 7 : 13*/
+  grid-template-columns: calc($width * 7/22) calc($width* 13/22);
+  /*gap 先不算 border為 1等分 所以 高的等分 6+1 12+1 加起來 7 : 7*/
+  grid-template-rows: calc($height * 7/16) calc($height* 7/16);
+  gap: $gap;
+  background-color: $flag_cross_color;
+
+  .item {
+    background-color: $flag_bg_color;
+
+    &:nth-child(1) {
+      border-bottom: $flag_border_color $border solid;
+      border-right: $flag_border_color $border solid;
+    }
+
+    &:nth-child(2) {
+      border-bottom: $flag_border_color $border solid;
+      border-left: $flag_border_color $border solid;
+    }
+
+    &:nth-child(3) {
+      border-top: $flag_border_color $border solid;
+      border-right: $flag_border_color $border solid;
+    }
+
+    &:nth-child(4) {
+      border-top: $flag_border_color $border solid;
+      border-left: $flag_border_color $border solid;
+    }
+  }
+}

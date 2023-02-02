@@ -1,0 +1,61 @@
+$width: 150px;
+$height: $width * 2/3;
+$flag_bg_color: #ffffff;
+$flag_circle_color: #ff0000;
+$circle_diameter: $height * 3/5;
+
+* {
+  box-sizing: border-box;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.frame {
+  border: 1px solid black;
+  width: $width;
+  height: $height;
+  background-color: $flag_bg_color;
+}
+
+.circle {
+  width: $circle_diameter;
+  height: $circle_diameter;
+  border-radius: 50%;
+  background-color: $flag_circle_color;
+}
+
+/*第一種*/
+
+.first-answer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*第二種*/
+
+.second-answer {
+  position: relative;
+}
+
+.second-answer .circle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*第三種*/
+
+.third-answer {
+  display: flex;
+}
+
+.third-answer .circle {
+  margin: auto;
+}

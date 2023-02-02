@@ -1,0 +1,45 @@
+@charset "UTF-8";
+/*國旗 寬 6:1:2:1:12(加起來22)  高 6:1:2:1:6(加起來16)*/
+/*設定 gap 為 2等分 border為 1等分*/
+/* 16:22 */
+/*gap 為 2等分 2/22 = 1/11 */
+/* border 為 1等分 所以 gap 除以 2*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.flag {
+  width: 100vw;
+  height: 72.7272727273vw;
+  display: grid;
+  /*gap 先不算 border為 1等分 所以 寬的等分 6+1 12+1 加起來 7 : 13*/
+  grid-template-columns: 31.8181818182vw 59.0909090909vw;
+  /*gap 先不算 border為 1等分 所以 高的等分 6+1 12+1 加起來 7 : 7*/
+  grid-template-rows: 31.8181818182vw 31.8181818182vw;
+  gap: 9.0909090909vw;
+  background-color: #00205B;
+}
+.flag .item {
+  background-color: #BA0C2F;
+}
+.flag .item:nth-child(1) {
+  border-bottom: #ffffff 4.5454545455vw solid;
+  border-right: #ffffff 4.5454545455vw solid;
+}
+.flag .item:nth-child(2) {
+  border-bottom: #ffffff 4.5454545455vw solid;
+  border-left: #ffffff 4.5454545455vw solid;
+}
+.flag .item:nth-child(3) {
+  border-top: #ffffff 4.5454545455vw solid;
+  border-right: #ffffff 4.5454545455vw solid;
+}
+.flag .item:nth-child(4) {
+  border-top: #ffffff 4.5454545455vw solid;
+  border-left: #ffffff 4.5454545455vw solid;
+}
+
+/*# sourceMappingURL=flag.css.map */
