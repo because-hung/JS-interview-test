@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="title">
+    <h2>面試情境題</h2>
+  </div>
+  <script>
+    // 1.
+
+    // 找出陣列中不同位子相加會等於9的兩個位子
+    nums = [2, 7, 11, 15], target = 13
+    let res = []
+    var twoSum = function (nums, target) {
+
+      for (var i = 0; i < nums.length; i++) {
+        for (var j = 0; j < i; j++) {
+          if ((nums[i] + nums[j]) == target) {
+            res.push(nums[i])
+            res.push(nums[j])
+            // console.log(nums[i], nums[j])
+            // console.log(res)
+          }
+        }
+      }
+      if(res.length == 0){
+        res.push('No element')
+        // console.log(res)
+      }
+      return res
+    };
+
+    // twoSum(nums, target)
+
+    const answer = twoSum(nums, target)
+    console.log('answer', answer)
+    // Expect: twoSum (nums, target)= [0, 1]
+
+    // 2.
+
+    // 從strs裡每個單字的最前面開始，找出最長的共同字元  (X 尚未完成)
+    // strs = ["flower","flow","flight"]  // ok
+    strs = ['Tom', 'Tomww', 'Tommwww'] // 重複字體 nono bug 
+    console.log(strs)
+    const arr = []
+    var longestCommonPrefix = function (strs) {
+      let arr = []
+      let res = []
+      strs.forEach(el => {
+        arr = arr.concat(el.split(''))
+      });
+      console.log(arr)
+
+      const total = arr.reduce((obj, item) => {
+        if (item in obj) {
+          obj[item]++
+        } else {
+          obj[item] = 1
+        }
+        return obj
+      }, {})
+
+      Object.entries(total).forEach(el => {
+        if (el[1] == strs.length) {
+          res.push(el[0])
+        }
+      })
+
+      console.log(res)
+
+
+
+      //   const filterStr = strs[0].split('')
+      //   const data = strs.slice(1, 3)
+      //   console.log(data)
+      //   console.log(filterStr)
+      // strs.forEach((items)=> {
+      //   filterStr.forEach((el)=>{
+      //     if(items.includes(el)){
+      //       arr.push(el)
+      //    }
+      //   })
+
+      //  })
+
+      // const result = new Set();
+      // const repeat = new Set()
+      // arr.forEach(item=>{
+      //   result.has(item) ? repeat.add(item) : result.add(item);
+      // })
+      // console.log(arr)
+      // console.log(repeat)
+
+
+    };
+
+    longestCommonPrefix(strs)
+
+    // Expect: longestCommonPrefix(strs)=”fl”
+  </script>
+
+</body>
+
+</html>
