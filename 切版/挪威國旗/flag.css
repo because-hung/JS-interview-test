@@ -7,39 +7,47 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   overflow-x: hidden;
 }
 
 .flag {
   width: 100vw;
-  height: 72.7272727273vw;
+  height: 72.72727vw;
+  display: -ms-grid;
   display: grid;
   /*gap 先不算 border為 1等分 所以 寬的等分 6+1 12+1 加起來 7 : 13*/
-  grid-template-columns: 31.8181818182vw 59.0909090909vw;
+  -ms-grid-columns: calc($width * 7/22) calc($width* 13/22);
+      grid-template-columns: calc($width * 7/22) calc($width* 13/22);
   /*gap 先不算 border為 1等分 所以 高的等分 6+1 12+1 加起來 7 : 7*/
-  grid-template-rows: 31.8181818182vw 31.8181818182vw;
-  gap: 9.0909090909vw;
+  -ms-grid-rows: calc($height * 7/16) calc($height* 7/16);
+      grid-template-rows: calc($height * 7/16) calc($height* 7/16);
+  gap: 9.09091vw;
   background-color: #00205B;
 }
+
 .flag .item {
   background-color: #BA0C2F;
 }
+
 .flag .item:nth-child(1) {
-  border-bottom: #ffffff 4.5454545455vw solid;
-  border-right: #ffffff 4.5454545455vw solid;
-}
-.flag .item:nth-child(2) {
-  border-bottom: #ffffff 4.5454545455vw solid;
-  border-left: #ffffff 4.5454545455vw solid;
-}
-.flag .item:nth-child(3) {
-  border-top: #ffffff 4.5454545455vw solid;
-  border-right: #ffffff 4.5454545455vw solid;
-}
-.flag .item:nth-child(4) {
-  border-top: #ffffff 4.5454545455vw solid;
-  border-left: #ffffff 4.5454545455vw solid;
+  border-bottom: #ffffff 4.54545vw solid;
+  border-right: #ffffff 4.54545vw solid;
 }
 
+.flag .item:nth-child(2) {
+  border-bottom: #ffffff 4.54545vw solid;
+  border-left: #ffffff 4.54545vw solid;
+}
+
+.flag .item:nth-child(3) {
+  border-top: #ffffff 4.54545vw solid;
+  border-right: #ffffff 4.54545vw solid;
+}
+
+.flag .item:nth-child(4) {
+  border-top: #ffffff 4.54545vw solid;
+  border-left: #ffffff 4.54545vw solid;
+}
 /*# sourceMappingURL=flag.css.map */

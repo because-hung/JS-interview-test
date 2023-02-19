@@ -1,0 +1,30 @@
+.box {
+  width: 200px;
+  height: 200px;
+  background: red;
+  margin: 10px;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .outer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .box {
+    text-align: center;
+  }
+  .box span {
+    line-height: 200px;
+  }
+  .box span:nth-of-type(odd) {
+    position: relative;
+    top: -10px;
+  }
+  .box span:nth-of-type(even) {
+    position: relative;
+    top: 10px;
+  }
+}
+/*# sourceMappingURL=job.css.map */
