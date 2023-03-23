@@ -104,11 +104,11 @@
 
     //  // Q6 - answer - 3 - setTimeout 帶參數
 
-    for (var i = 1; i <= 5; i++) {
-      setTimeout(function (i) {
-        console.log(i)
-      }, 0 , i) // 1 2 3 4 5
-    }
+    // for (var i = 1; i <= 5; i++) {
+    //   setTimeout(function (i) {
+    //     console.log(i)
+    //   }, 0 , i) // 1 2 3 4 5
+    // }
 
     // // Q7
 
@@ -262,29 +262,51 @@
 
     // Q11 質數 for 應用
 
-    function decidePrime(n) {
-      // 判斷一個數是否能被自身小的正整數(除了1和自身)整除，能整除則不是質數
-      for (var k = 2; k < n; k++) {
-        if (n % k == 0) {
-          return false;
-        }
-      }
-      return true
+    // function decidePrime(n) {
+    //   // 判斷一個數是否能被自身小的正整數(除了1和自身)整除，能整除則不是質數
+    //   for (var k = 2; k < n; k++) {
+    //     if (n % k == 0) {
+    //       return false;
+    //     }
+    //   }
+    //   return true
 
+    // }
+
+    // function primeNumber(num) {
+    //   var arr = [1];
+    //   // 帶入任意數  利用判斷method 判斷是否為質數 是 就加入 array
+    //   for (var i = 2; i < num + 1; i++) {
+    //     if (decidePrime(i)) {
+    //       arr.push(i);
+    //     }
+    //   }
+    //   return arr;
+    // }
+
+    // console.log(primeNumber(50));
+
+    // Q12 資料處理  把ary 重複的數字 大於10的數字拿掉  轉成陣列跟obj(key value必須相反呈現) 
+    // obj= {0:2, 1:7, 2:8} => obj= {2:0, 7:1, 8:2}
+
+    const ary = [2, 11, 8, 43, 8, 7]
+    let answer1, answer2;
+
+    answer2 = {}
+    const data = new Set(ary) // 去掉重複的數  
+    const res = Array.from(data) // set完會類陣列  轉成陣列
+    const result = res.filter(it => it < 11) // 篩掉 > 10
+    result.sort(function (a, b) { //排序
+      return a - b
+    });
+    answer1 = result
+    obj = Object.assign({}, result); // 轉成 obj
+    for (let key in obj) { // key value 對調
+      let value = obj[key];
+      answer2[value] = key;
     }
-
-    function primeNumber(num) {
-      var arr = [1];
-      // 帶入任意數  利用判斷method 判斷是否為質數 是 就加入 array
-      for (var i = 2; i < num + 1; i++) {
-        if (decidePrime(i)) {
-          arr.push(i);
-        }
-      }
-      return arr;
-    }
-
-    console.log(primeNumber(50));
+    console.log('array =>', answer1)
+    console.log('obj =>', answer2)
   </script>
 </body>
 
