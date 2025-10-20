@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid 置中範例</title>
+    <style>
+      .container {
+        display: grid; /* 啟用 grid 佈局 */
+        place-items: center; /* 同時水平與垂直置中 */
+        /* 等同於 align-items: center;    垂直置中 
+          justify-items: center; 水平置中  */
+        height: 100vh; /* 讓容器填滿整個視窗 */
+        background-color: #f3f3f3;
+      }
+
+      .box {
+        width: 200px;
+        height: 100px;
+        background-color: #4f8ef7;
+        color: white;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">置中區塊</div>
+    </div>
+  </body>
+</html>

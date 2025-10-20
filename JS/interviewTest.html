@@ -1,313 +1,350 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-</head>
+  <body>
+    <div class="title">
+      <h2>JS 面試題型練習</h2>
+    </div>
+    <script>
+      // // Q1 - 作用域
+      // var a = 1
+      // var b = 1
+      // var e = 1
 
-<body>
-  <div class="title">
-    <h2>JS 面試題型練習</h2>
-  </div>
-  <script>
-    // // Q1 - 作用域
-    // var a = 1
-    // var b = 1
-    // var e = 1
+      // function test(a) {
+      //   console.log("a", a) // undefined (這裡的a 是傳進來的那個參數a 不是gobal 的a)
+      //   var b = 2
+      //   console.log("b", b) // 2
+      //   if (true) {
+      //     let c = 5
+      //     var d = 6
+      //     const e = 7
+      //   }
+      //   console.log("c", c) // error 程式到這裡就暫停
+      //   console.log("d", d) // 6
+      //   console.log("e", e) // 1
 
-    // function test(a) {
-    //   console.log("a", a) // undefined (這裡的a 是傳進來的那個參數a 不是gobal 的a)
-    //   var b = 2
-    //   console.log("b", b) // 2
-    //   if (true) {
-    //     let c = 5
-    //     var d = 6
-    //     const e = 7
-    //   }
-    //   console.log("c", c) // error 程式到這裡就暫停
-    //   console.log("d", d) // 6
-    //   console.log("e", e) // 1
+      // }
 
-    // }
+      // test()
 
-    // test()
+      // // Q2 - 加法
+      // var bar = true;
+      // console.log(bar + 0); // 1 數字 + 數字 -> 加法
+      // console.log(bar + "xyz"); // "truexyz" 數字 + 字符串 -> 連接
+      // console.log(bar + true); // 2 布爾值 + 數字 -> 加法
+      // console.log(bar + false); // 1 布爾值 + 數字 -> 加法
 
-    // // Q2 - 加法
-    // var bar = true;
-    // console.log(bar + 0); // 1 數字 + 數字 -> 加法
-    // console.log(bar + "xyz"); // "truexyz" 數字 + 字符串 -> 連接
-    // console.log(bar + true); // 2 布爾值 + 數字 -> 加法
-    // console.log(bar + false); // 1 布爾值 + 數字 -> 加法
+      // // Q3 - 宣告
+      // var z = 1,
+      //   y = z = typeof y;
+      // console.log(y); // undefined  Right to Left，因此typeof y將首先評估 ，即undefined。它將被分配給z，然後y被分配 z 的值，然後z被分配值undefined。
 
-    // // Q3 - 宣告
-    // var z = 1,
-    //   y = z = typeof y;
-    // console.log(y); // undefined  Right to Left，因此typeof y將首先評估 ，即undefined。它將被分配給z，然後y被分配 z 的值，然後z被分配值undefined。
+      // // Q4 -function
 
-    // // Q4 -function
+      // var foo = function bar() {
+      //   return 12;
+      // };
+      // typeof bar(); // Reference Error
 
-    // var foo = function bar() {
-    //   return 12;
-    // };
-    // typeof bar(); // Reference Error
+      // // Q4 - answer
 
-    // // Q4 - answer
+      // var foo = function bar() {
+      //   // foo is visible here
+      //   // bar is visible here
+      //   console.log(typeof bar()); // Work here :)
+      // };
+      // // foo is visible here
+      // // bar is undefined here
 
-    // var foo = function bar() {
-    //   // foo is visible here 
-    //   // bar is visible here
-    //   console.log(typeof bar()); // Work here :)
-    // };
-    // // foo is visible here
-    // // bar is undefined here
+      // Q5 - hoisting
 
-    // Q5 - hoisting
+      // var salary = "1000$";
 
-    // var salary = "1000$";
+      // (function () { // func 裡有自己的 salary變數 不用理會 gobal 的 salary
+      //   console.log("Original salary was " + salary); // undefined
 
-    // (function () { // func 裡有自己的 salary變數 不用理會 gobal 的 salary
-    //   console.log("Original salary was " + salary); // undefined
+      //   var salary = "5000$";
 
-    //   var salary = "5000$";
+      //   console.log("My New Salary " + salary); // 5000$
+      // })();
 
-    //   console.log("My New Salary " + salary); // 5000$
-    // })();
+      // Q6
 
-    // Q6
+      // for (var i = 1; i <= 5; i++) {
+      //   setTimeout(function () {
+      //     console.log(i)
+      //   }, i) // 6 6 6 6 6
+      // }
 
-    // for (var i = 1; i <= 5; i++) {
-    //   setTimeout(function () {
-    //     console.log(i)
-    //   }, i) // 6 6 6 6 6
-    // }
+      // // Q6 - answer - 1 - let
 
-    // // Q6 - answer - 1 - let
+      // for (let i = 1; i <= 5; i++) {
+      //   setTimeout(function () {
+      //     console.log(i)
+      //   }, 0) // 1 2 3 4 5
+      // }
 
-    // for (let i = 1; i <= 5; i++) {
-    //   setTimeout(function () {
-    //     console.log(i)
-    //   }, 0) // 1 2 3 4 5
-    // }
+      // // Q6 - answer - 2 - 閉包
 
-    // // Q6 - answer - 2 - 閉包
+      // for (var i = 1; i <= 5; i++) {
+      //   (function (i) {
+      //     setTimeout(function () {
+      //       console.log(i)
+      //     }, 0) // 1 2 3 4 5
+      //   })(i)
+      // }
 
-    // for (var i = 1; i <= 5; i++) {
-    //   (function (i) {
-    //     setTimeout(function () {
-    //       console.log(i)
-    //     }, 0) // 1 2 3 4 5
-    //   })(i)
-    // }
+      //  // Q6 - answer - 3 - setTimeout 帶參數
 
-    //  // Q6 - answer - 3 - setTimeout 帶參數
+      // for (var i = 1; i <= 5; i++) {
+      //   setTimeout(function (i) {
+      //     console.log(i)
+      //   }, 0 , i) // 1 2 3 4 5
+      // }
 
-    // for (var i = 1; i <= 5; i++) {
-    //   setTimeout(function (i) {
-    //     console.log(i)
-    //   }, 0 , i) // 1 2 3 4 5
-    // }
+      // // Q7
 
-    // // Q7
+      // {
+      //   (function () {
+      //     var a = b = 'hello world'
+      //   })()
 
-    // {
-    //   (function () {
-    //     var a = b = 'hello world'
-    //   })()
+      //   console.log(`a defined? ${typeof a !== 'undefined'}`) // undefined  - false
+      //   console.log(`b defined? ${typeof b !== 'undefined'}`) // 'hello world' - true
+      // }
 
-    //   console.log(`a defined? ${typeof a !== 'undefined'}`) // undefined  - false
-    //   console.log(`b defined? ${typeof b !== 'undefined'}`) // 'hello world' - true
-    // }
+      // // 會變成下方這樣
 
-    // // 會變成下方這樣
+      // {
+      //   (function () {
+      //     b = 'hello world'
+      //     var a = b
+      //   })()
+      // }
 
-    // {
-    //   (function () {
-    //     b = 'hello world'
-    //     var a = b
-    //   })()
-    // }
+      // // Q8 promise
 
-    // // Q8 promise
+      // const p = new Promise((resolve, reject) => {
+      //   console.log(1)
+      //   resolve(5)
+      //   console.log(2)
+      //   reject(6)
+      // })
 
-    // const p = new Promise((resolve, reject) => {
-    //   console.log(1)
-    //   resolve(5)
-    //   console.log(2)
-    //   reject(6)
-    // })
+      // p
+      //   .then(value => {
+      //     console.log(value)
+      //     console.log(3)
+      //   })
+      //   .catch(error => {
+      //     console.log(error)
+      //   })
 
-    // p
-    //   .then(value => {
-    //     console.log(value)
-    //     console.log(3)
-    //   })
-    //   .catch(error => {
-    //     console.log(error)
-    //   })
+      // console.log(4)
 
-    // console.log(4)
+      // // Q8 - answer - 1、2、4、5、3
 
-    // // Q8 - answer - 1、2、4、5、3
+      // // Q9 - promise -2
 
-    // // Q9 - promise -2
+      // console.log(1)
 
-    // console.log(1)
+      // setTimeout(() => {
+      //   console.log(2)
+      //   Promise.resolve().then(() => console.log(3))
+      // }, 0)
 
-    // setTimeout(() => {
-    //   console.log(2)
-    //   Promise.resolve().then(() => console.log(3))
-    // }, 0)
+      // new Promise((resolve, reject) => {
+      //   console.log(4)
+      //   resolve(5)
+      // }).then(data => console.log(data))
 
-    // new Promise((resolve, reject) => {
-    //   console.log(4)
-    //   resolve(5)
-    // }).then(data => console.log(data))
+      // setTimeout(() => {
+      //   console.log(6)
+      // }, 0)
 
-    // setTimeout(() => {
-    //   console.log(6)
-    // }, 0)
+      // console.log(7)
 
-    // console.log(7)
+      // // Q9 - answer - 1、4、7、5、2、3、6
 
-    // // Q9 - answer - 1、4、7、5、2、3、6
+      // // Q10 - reduce
+      // const arr = [{
+      //     id: 1,
+      //     name: 'a'
+      //   },
+      //   {
+      //     id: 2,
+      //     name: 'b'
+      //   },
+      //   {
+      //     id: 3,
+      //     name: 'c'
+      //   },
+      //   // {
+      //   //   id: 2,
+      //   //   name: 'b'
+      //   // },
+      //   {
+      //     id: 4,
+      //     name: 'd'
+      //   }
+      // ]
 
-    // // Q10 - reduce
-    // const arr = [{
-    //     id: 1,
-    //     name: 'a'
-    //   },
-    //   {
-    //     id: 2,
-    //     name: 'b'
-    //   },
-    //   {
-    //     id: 3,
-    //     name: 'c'
-    //   },
-    //   // {
-    //   //   id: 2,
-    //   //   name: 'b'
-    //   // },
-    //   {
-    //     id: 4,
-    //     name: 'd'
-    //   }
-    // ]
+      // // obj
+      // const newArr = arr.reduce((acc, cur) => {
+      // // if(!acc.hasOwnProperty(cur.id)){ acc[cur.id] = cur.name }
+      //   acc[cur.id] = cur.name
+      //   return acc
+      // }, {})
+      // console.log('obj', newArr)
 
-    // // obj
-    // const newArr = arr.reduce((acc, cur) => {
-    // // if(!acc.hasOwnProperty(cur.id)){ acc[cur.id] = cur.name }
-    //   acc[cur.id] = cur.name
-    //   return acc
-    // }, {})
-    // console.log('obj', newArr)
+      // // ary
+      // const newArr2 = arr.reduce((acc, cur) => {
+      //   if(!acc.includes(cur.name)){ acc.push(cur.name) }
+      //   // acc.push(cur.name)
+      //   return acc
+      // }, [])
+      // console.log('objTWO', newArr2)
 
-    // // ary
-    // const newArr2 = arr.reduce((acc, cur) => {
-    //   if(!acc.includes(cur.name)){ acc.push(cur.name) }
-    //   // acc.push(cur.name)
-    //   return acc
-    // }, [])
-    // console.log('objTWO', newArr2)
+      // // answer reduce
+      // const obj = {
+      //   1: 'a',
+      //   2: 'b',
+      //   3: 'c',
+      //   4: 'd'
+      // }
 
-    // // answer reduce
-    // const obj = {
-    //   1: 'a',
-    //   2: 'b',
-    //   3: 'c',
-    //   4: 'd'
-    // }
+      // // Q10 -2 reduce 分類
 
-    // // Q10 -2 reduce 分類
+      //  // reduce -2
+      //  const arr2 = [
+      //   { name: 'Alice', job: 'Data Analyst', country: 'AU' },
+      //   { name: 'Bob', job: 'Pilot', country: 'US' },
+      //   { name: 'Lewis', job: 'Pilot', country: 'US' },
+      //   { name: 'Karen', job: 'Software Eng', country: 'CA' },
+      //   { name: 'Jona', job: 'Painter', country: 'CA' },
+      //   { name: 'Jeremy', job: 'Artist', country: 'SP' }
+      // ]
+      // const result = arr2.reduce((acc, cur) => {
+      //   const country = 'country'
+      //   const newkey = cur[country]
+      //   if (!acc[newkey]) {
+      //     acc[newkey] = []
+      //   }
+      //   acc[newkey].push(cur)
+      //   return acc
+      // }, [])
 
-    //  // reduce -2
-    //  const arr2 = [
-    //   { name: 'Alice', job: 'Data Analyst', country: 'AU' },
-    //   { name: 'Bob', job: 'Pilot', country: 'US' },
-    //   { name: 'Lewis', job: 'Pilot', country: 'US' },
-    //   { name: 'Karen', job: 'Software Eng', country: 'CA' },
-    //   { name: 'Jona', job: 'Painter', country: 'CA' },
-    //   { name: 'Jeremy', job: 'Artist', country: 'SP' }
-    // ]
-    // const result = arr2.reduce((acc, cur) => {
-    //   const country = 'country'
-    //   const newkey = cur[country]
-    //   if (!acc[newkey]) {
-    //     acc[newkey] = []
-    //   }
-    //   acc[newkey].push(cur)
-    //   return acc
-    // }, [])
+      // console.log(result)
 
-    // console.log(result)
+      // // reduce -3 - js30 - 04 - Array Cardio Day 1
 
-    // // reduce -3 - js30 - 04 - Array Cardio Day 1
+      // const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car',
+      //   'truck', 'pogostick'
+      // ];
 
-    // const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car',
-    //   'truck', 'pogostick'
-    // ];
+      // const newObj = data.reduce((obj, item) => {
+      //   if (!obj[item]) {
+      //     obj[item] = 0;
+      //   }
+      //   obj[item]++;
+      //   return obj;
+      // }, {});
 
-    // const newObj = data.reduce((obj, item) => {
-    //   if (!obj[item]) {
-    //     obj[item] = 0;
-    //   }
-    //   obj[item]++;
-    //   return obj;
-    // }, {});
+      // console.log(newObj)
 
-    // console.log(newObj)
+      // Q11 質數 for 應用
 
-    // Q11 質數 for 應用
+      // function decidePrime(n) {
+      //   // 判斷一個數是否能被自身小的正整數(除了1和自身)整除，能整除則不是質數
+      //   for (var k = 2; k < n; k++) {
+      //     if (n % k == 0) {
+      //       return false;
+      //     }
+      //   }
+      //   return true
 
-    // function decidePrime(n) {
-    //   // 判斷一個數是否能被自身小的正整數(除了1和自身)整除，能整除則不是質數
-    //   for (var k = 2; k < n; k++) {
-    //     if (n % k == 0) {
-    //       return false;
-    //     }
-    //   }
-    //   return true
+      // }
 
-    // }
+      // function primeNumber(num) {
+      //   var arr = [1];
+      //   // 帶入任意數  利用判斷method 判斷是否為質數 是 就加入 array
+      //   for (var i = 2; i < num + 1; i++) {
+      //     if (decidePrime(i)) {
+      //       arr.push(i);
+      //     }
+      //   }
+      //   return arr;
+      // }
 
-    // function primeNumber(num) {
-    //   var arr = [1];
-    //   // 帶入任意數  利用判斷method 判斷是否為質數 是 就加入 array
-    //   for (var i = 2; i < num + 1; i++) {
-    //     if (decidePrime(i)) {
-    //       arr.push(i);
-    //     }
-    //   }
-    //   return arr;
-    // }
+      // console.log(primeNumber(50));
 
-    // console.log(primeNumber(50));
+      // Q12 資料處理  把ary 重複的數字 大於10的數字拿掉  轉成陣列跟obj(key value必須相反呈現)
+      // obj= {0:2, 1:7, 2:8} => obj= {2:0, 7:1, 8:2}
 
-    // Q12 資料處理  把ary 重複的數字 大於10的數字拿掉  轉成陣列跟obj(key value必須相反呈現) 
-    // obj= {0:2, 1:7, 2:8} => obj= {2:0, 7:1, 8:2}
+      const ary = [2, 11, 8, 43, 8, 7];
+      let answer1, answer2;
 
-    const ary = [2, 11, 8, 43, 8, 7]
-    let answer1, answer2;
+      answer2 = {};
+      const data = new Set(ary); // 去掉重複的數
+      const res = Array.from(data); // set完會類陣列  轉成陣列
+      const result = res.filter((it) => it < 11); // 篩掉 > 10
+      result.sort(function (a, b) {
+        //排序
+        return a - b;
+      });
+      answer1 = result;
+      obj = Object.assign({}, result); // 轉成 obj
+      for (let key in obj) {
+        // key value 對調
+        let value = obj[key];
+        answer2[value] = key;
+      }
+      console.log("array =>", answer1);
+      console.log("obj =>", answer2);
 
-    answer2 = {}
-    const data = new Set(ary) // 去掉重複的數  
-    const res = Array.from(data) // set完會類陣列  轉成陣列
-    const result = res.filter(it => it < 11) // 篩掉 > 10
-    result.sort(function (a, b) { //排序
-      return a - b
-    });
-    answer1 = result
-    obj = Object.assign({}, result); // 轉成 obj
-    for (let key in obj) { // key value 對調
-      let value = obj[key];
-      answer2[value] = key;
-    }
-    console.log('array =>', answer1)
-    console.log('obj =>', answer2)
-  </script>
-</body>
+      // Q13 微任務 vs 巨任務：
+      console.log("1");
 
+      setTimeout(() => console.log("2"), 0);
+
+      Promise.resolve().then(() => console.log("3"));
+
+      console.log("4");
+
+      // 輸出順序 - 答案： 1 - 4 - 3 - 2
+
+      // 解析：
+
+      // 1 → 同步。
+      // setTimeout → macrotask，丟進 queue。
+      // Promise.then → microtask，會優先於 macrotask。
+      // 4 → 同步。
+      // stack 清空後 → 先跑 microtask 3 → 再跑 macrotask 2。
+
+      // Q14 async / await
+
+      async function test() {
+        console.log("X");
+        await Promise.resolve();
+        console.log("Y");
+      }
+      test();
+      console.log("Z");
+
+      // 輸出 -答案： X - Z - Y
+
+      // 解析：
+      // async function 內 console.log("X") 先跑。
+      // await Promise.resolve() → 會拆成 microtask。
+      // console.log("Z") 先跑。
+      // microtask 執行 → console.log("Y")。
+    </script>
+  </body>
 </html>
